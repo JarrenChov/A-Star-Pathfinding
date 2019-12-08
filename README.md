@@ -1,7 +1,7 @@
 # A* Pathfinding Algorithm Written in C++
 Using the concept of A*, to create a simulation of a supervised robot with a set task to find the shortest possible path (if feasible) by traversing a given environment.
 
-The basis of A* A* search with manhattan distance heuristic => `f(n) = g(n) + h(n)` constitutes of:
+The basis of A* search with manhattan distance heuristic => `f(n) = g(n) + h(n)` constitutes of:
 - `f(n)` = Evaluation function.
 - `g(n)` = Total Cost of a cumulative total from the start node to the current node
 - `h(n)` = Estimated shortest cost from current node to goal.
