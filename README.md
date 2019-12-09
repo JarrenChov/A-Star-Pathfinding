@@ -97,6 +97,15 @@ To run the program, by initially starting at the root directory `A-Star-Pathfind
 ```bash
 cd ./build
 ```
+In the case that you do not have necessary permission for `robotplanner` (and this would result in other files aswell), run the following commands prior to executing the above command:
+```bash
+chmod u=rwx permissions.sh
+```
+then
+```bash
+./premissions.sh
+```
+
 Since the program expects 5 specified arguments as defined below:
 - Arguments Defintion:
   - `grid-file location`: Denotes the relative path to a specified grid file
@@ -209,7 +218,7 @@ Although if the schematics are followed step by step there may be other factors 
 - Since the robot can only take 90 degree turns, this introduces the fact that the most optimal path to move from one block to another would be a 45 degree angle to the next block. That is to say, the current implementation takes two moves to the next to a possible path, which instead the optimal way would be the move straight to that path by moving diagonally. This of cause would result in calculating the euclidean distance and not the manhattan distance instead.
 - If the supplied grid is arbitrary large, then the computational cost and efficiency of the program will greatly decrease. In addition, the storage complexity will vastly increase as each node must be stored in memory and kept track of.
 
-# Further Improvments
+# Further Improvements
 Like stated in the above section titled [Limitations](#limitations), the created project could be improved to obtain even further more accurate results, and reduce the complexity both in regards to space and time. Such improvements could be:
 - Reducing the time complexity of the program.
 Since the program mainly is a nested loop nested inside a continuous while loop, the complexity in terms of a real-world application would be just plain unfeasible. That is, the amount of time taken to generate a result would be unreliable and in-efficient. With this in mind, a few ideas could be:
