@@ -103,7 +103,7 @@ chmod u=rwx permissions.sh
 ```
 then
 ```bash
-./premissions.sh
+./permissions.sh
 ```
 
 Since the program expects 5 specified arguments as defined below:
