@@ -48,6 +48,7 @@ A-Star-Pathfinding
 │   └── pathDefn.cpp
 ├── .gitignore
 ├── Makefile
+├── permissions.sh
 └── README.md
 ```
 Please take note that:
