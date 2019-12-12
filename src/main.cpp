@@ -1,5 +1,6 @@
 #include "../include/struct.h"
 #include "../include/global.h"
+#include "../include/paramDefn.h"
 #include "../include/initDefn.h"
 #include "../include/pathDefn.h"
 #include <iostream>
@@ -19,10 +20,20 @@ int main(int argc, char* argv[]) {
 	int options[2] = {1, -1};
 
 	Coordinates *startPosition, *endPosition;
- 
- 	// Initalize enviroment map, starting and ending points
+
+	// Obtain user input
+	details = get_details();
+	string envPath = get_environment();
+	int* startCoordiantes = get_postion("START", envPath);
+	int* endCoordiantes = get_postion("END", envPath);
+	if ((startCoordiantes == NULL) || (endCoordiantes == NULL)) {
+		return -1;
+	}
+	
+ 	// Initalize environment map, starting and ending points
  	// Check to ensure input is valid
-	int init_success = initalize(argc, argv, &startPosition, &endPosition);
+	// int init_success = initalize(argc, argv, &startPosition, &endPosition);
+	int init_success = initalize(envPath, startCoordiantes, endCoordiantes, &startPosition, &endPosition);
 	if (init_success == -1) {
 		return -1;
 	}

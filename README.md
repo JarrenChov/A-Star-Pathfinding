@@ -19,7 +19,7 @@ The basis of A* search with manhattan distance heuristic => `f(n) = g(n) + h(n)`
   - [Compiling](#compiling)
   - [Important Notes Before Execution](#important-notes-before-execution)
     - [Environment Structure](#environment-structure)
-    - [Program Arguments](#program-arguments)
+    - [Program User Inputs](#program-user-inputs)
   - [Running the Program](#running-the-program)
   - [Understanding the Output](#understanding-the-output)
     - [Environment Grid Output](#enviroment-grid-output)
@@ -40,11 +40,13 @@ A-Star-Pathfinding
 ├── include
 │   ├── global.h
 │   ├── initDefn.h
+│   ├── paramDefn.h
 │   ├── pathDefn.h
 │   └── struct.h
 ├── src
 │   ├── initDefn.cpp
 │   ├── main.cpp
+│   ├── paramDefn.cpp
 │   └── pathDefn.cpp
 ├── .gitignore
 ├── Makefile
@@ -89,9 +91,40 @@ For example, using the supplied testgrid `grid-small.txt`:
 1	0	0	0	0
 0	0	0	1	0
 ```
-### Program Arguments
+### Program User Inputs
 When specifying starting and ending positions, please note that coordinates start in *top-left* of the testgrid and start at `(0, 0)`. That is to say, numbers must start at **0** and not **1**, simulating a real` (x, y)` coordinate space.
 
+Since the program will expect 6 user specified information as defined below:
+- Arguments Defintion:
+  - `detail information`: Denotes if the user would prefer the resulting solution without intermediate steps
+    - The field accepts strictly any string format variations of `yes` and `no`, includng `y` and `n`. In addition, if the input starts with either a `y` or `n`, the corresponding letter will be taken as `yes` or `no` respectively.
+  - `grid-file location`: Denotes the relative path to a specified grid file
+    - The field accepts strictly any string format of a location to a relative path of a input file. This path starts in `/build`, the same folder location as the executable `robotplanner` .
+  - `start-x coordinate`: Denotes the x-coordinate of the starting position
+  - `start-y coordinate`: Denotes the y-coordinate of the starting position
+  - `end-x coordinate`: Denotes the x-coordinate of the end position
+  - `end-y coordinate`: Denotes the y-coordinate of the end position
+
+the format of the user information are as follows:
+```bash
+Output detailed information (yes/no)?: <user-input required>
+
+Please enter a environment file path or select one from below:
+Sample environment files:
+        ( 1 ) grid-small
+        ( 2 ) grid-large
+
+File Path / Number Selection: <user-input required>
+= = = = = = = = =
+<environment-map print>
+= = = = = = = = =
+
+Start Coordinate (x): <user-input required>
+Start Coordinate (y): <user-input required>
+
+End Coordinate (x): <user-input required>
+End Coordinate (y): <user-input required>
+```
 ## Running the Program
 *NOTE: If you have not already read [Important Notes Before Execution](#important-notes-before-execution), please read the notes first as they are important to ensuring the program behaves correctly.*
 To run the program, by initially starting at the root directory `A-Star-Pathfinding`, navigate to: `/build`
@@ -106,22 +139,10 @@ then
 ```bash
 ./permissions.sh
 ```
-
-Since the program expects 5 specified arguments as defined below:
-- Arguments Defintion:
-  - `grid-file location`: Denotes the relative path to a specified grid file
-  - `start-x coordinate`: Denotes the x-coordinate of the starting position
-  - `start-y coordinate`: Denotes the y-coordinate of the starting position
-  - `end-x coordinate`: Denotes the x-coordinate of the end position
-  - `end-y coordinate`: Denotes the y-coordinate of the end position
-
-the required format of the arguments are as follows:
-```bash
-./robotplanner <grid-file location> <start-x coordinate> <start-y coordinate> <end-x coordinate> <end-y coordinate>
-```
+By navigating to `/build` and locate the executable `robotplanner, the executable can be run by using the following command:
 For example (executing from the current `/build` directory):
 ```bash
-./robotplanner ./sample-grid/grid-small.txt 0 0 4 1
+./robotplanner
 ```
 
 ## Understanding the Output
@@ -153,32 +174,50 @@ These numbers are based on per-line inputs of the grid separated by each `tab-sp
    - a `number == -1` is a space occupied by a wall
 
 ### Iteration Output
-The following is a Snapshot of the last two iterations using the command in [Running the Program](#running-the-program):
+The following is a Snapshot of the last three iterations using the command in [Running the Program](#running-the-program) using detailed output:
 ```bash
-Iteration 15
+Iteration 13
 =======================
-Branched Nodes from: (3, 0)
-        Path Cost - g(n): 10
-        Eval Cost - f(n) = g(n) + h(n): 13
-        Current Coord: 2, 0
-        Previous Coord: 3, 0
+Branched Nodes from: (3, 1)
+        Path Cost - g(n): 9
+        Eval Cost - f(n) = g(n) + h(n): 1438615891
+        Current Coord: 4, 1
+        Previous Coord: 3, 1
+
+        Path Cost - g(n): 9
+        Eval Cost - f(n) = g(n) + h(n): 1438615893
+        Current Coord: 3, 0
+        Previous Coord: 3, 1
 
 --- Vector Resultants & Summary ---
-Iterative Node Expansion Count: 17
-Iterative Node Explored Count: 15
-Fringes: (4, 1), (2, 0),
-Visited Nodes: (0, 0), (0, 1), (1, 1), (1, 2), (1, 3), (2, 3), (1, 4), (2, 4), (3, 3), (0, 4), (3, 2), (4, 3), (3, 1), (4, 4), (3, 0),
+Iterative Node Expansion Count: 16
+Iterative Node Explored Count: 13
+Fringes: (4, 4), (4, 1), (3, 0),
+Visited Nodes: (0, 0), (0, 1), (1, 1), (1, 2), (1, 3), (2, 3), (1, 4), (2, 4), (3, 3), (0, 4), (3, 2), (4, 3), (3, 1),
 =======================
 
 
-Iteration 16
+Iteration 14
 =======================
+Branched Nodes from: (4, 4)
+--- Vector Resultants & Summary ---
+Iterative Node Expansion Count: 16
+Iterative Node Explored Count: 14
+Fringes: (4, 1), (3, 0),
+Visited Nodes: (0, 0), (0, 1), (1, 1), (1, 2), (1, 3), (2, 3), (1, 4), (2, 4), (3, 3), (0, 4), (3, 2), (4, 3), (3, 1), (4, 4),
+=======================
+
+
+Iteration 15
+=======================
+= = = S O L U T I O N = = =
 Execution Time: 0.015625 seconds
-Path Iterations: 16
-Explored Nodes: 17
+Path Iterations: 15
+Explored Nodes: 16
 
 Generated Path Size: 9
 Generated Path: D R D D R R U U R
+= = = = = = = = = = = = = =
 ```
 To understand such output, the first part containing `Branched Nodes from` denotes the possible paths that can occur from the current `(x, y)` coordinate, with a generated total of up to 3 possible paths. Where, each of the corresponding paths are shown its related information of:
 - `Path Cost`: A cumlative sum to get to the current position.

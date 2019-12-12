@@ -28,7 +28,7 @@ int manhattan_distance_heuristic(int node_xValue, int node_yValue, int end_xValu
 	return (abs(node_xValue - end_xValue) + abs(node_yValue - end_yValue));
 }
 
-// Initalize and setup map enviroment from testgrid
+// Initalize and setup map environment from testgrid
 int init_env(string file, Coordinates* startPosition, Coordinates* endPosition) {
 	string envLine, line;
 	int envLineNum = 0;
@@ -106,11 +106,11 @@ int init_env(string file, Coordinates* startPosition, Coordinates* endPosition) 
 }
 
 // Assign a new node with corresponding x and y position from testgrid
-int init_coordinates(Coordinates** location, string x_value, string y_value) {
+int init_coordinates(Coordinates** location, int x_value, int y_value) {
 	Coordinates* position = new Coordinates;
 
-	position->x_coord = integer_conversion(x_value);
-	position->y_coord = integer_conversion(y_value);
+	position->x_coord = x_value;
+	position->y_coord = y_value;
 
 	if (position->x_coord == -1 || position->y_coord == -1) {
 		return -1;
@@ -120,27 +120,27 @@ int init_coordinates(Coordinates** location, string x_value, string y_value) {
 	return 0;
 }
 
-// Setup corresponding map from user input [start and end goals] and the enviroment
-int initalize(int arguments, char* argument[],  
+// Setup corresponding map from user input [start and end goals] and the environment
+int initalize(string envPath, int* startCoordiantes, int* endCoordiantes,
 	Coordinates** startPosition, Coordinates** endPosition) {
-	if (arguments > 6) {
-		cout << "Error: To many arugments specified" << endl;
-		return -1;
-	}
+	// if (arguments > 6) {
+	// 	cout << "Error: To many arugments specified" << endl;
+	// 	return -1;
+	// }
 
-	if (arguments != 6) {
-		cout << "Error: Not enough arugments specified" << endl;
-		return -1;
-	}
+	// if (arguments != 6) {
+	// 	cout << "Error: Not enough arugments specified" << endl;
+	// 	return -1;
+	// }
 
-	// Assign start coordinates
-	int start_success = init_coordinates(&(*startPosition), argument[2], argument[3]);
-	// Assign end coordinates
-	int end_success = init_coordinates(&(*endPosition), argument[4], argument[5]);
 	// Generate testgrid into a 2D-Array
-	int env_success = init_env(argument[1], *startPosition, *endPosition);
+	int env_success = init_env(envPath, *startPosition, *endPosition);
+	// Assign start coordinates
+	int start_success = init_coordinates(&(*startPosition), startCoordiantes[0], startCoordiantes[1]);
+	// Assign end coordinates
+	int end_success = init_coordinates(&(*endPosition), endCoordiantes[0], endCoordiantes[1]);
 
-	if (start_success == -1 || end_success == -1 || env_success) {
+	if (start_success == -1 || end_success == -1 || env_success == -1) {
 		return -1;
 	}
 	return 0;

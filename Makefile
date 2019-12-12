@@ -5,7 +5,7 @@ INCLUDE_DIR = ./include
 BUILD_DIR = ./build
 OBJ_DIR = $(BUILD_DIR)/obj
 
-OBJS := $(addprefix $(OBJ_DIR)/, main.o init.o path.o)
+OBJS := $(addprefix $(OBJ_DIR)/, main.o param.o init.o path.o)
 COMMONS := $(addprefix $(INCLUDE_DIR)/, struct.h global.h)
 
 CXX = g++
@@ -18,6 +18,9 @@ $(EXE): $(OBJS)
 
 $(OBJ_DIR)/main.o: 	$(SRC_DIR)/main.cpp $(COMMONS)
 	$(CXX) -c -o $@ $(CXXFLAGS) $(SRC_DIR)/main.cpp 
+
+$(OBJ_DIR)/param.o:  $(SRC_DIR)/paramDefn.cpp $(INCLUDE_DIR)/paramDefn.h $(COMMONS)
+	$(CXX) -c -o $@ $(CXXFLAGS) $(SRC_DIR)/paramDefn.cpp 
 
 $(OBJ_DIR)/init.o: 	$(SRC_DIR)/initDefn.cpp $(INCLUDE_DIR)/initDefn.h $(COMMONS)
 	$(CXX) -c -o $@ $(CXXFLAGS) $(SRC_DIR)/initDefn.cpp

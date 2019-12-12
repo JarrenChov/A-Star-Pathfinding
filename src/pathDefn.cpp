@@ -12,7 +12,7 @@ int calculate_evaluation(int pathCost, int heuristicCost) {
 	return (pathCost + heuristicCost);
 }
 
-// Find all possible paths traversable by one block in enviroment map from current node
+// Find all possible paths traversable by one block in environment map from current node
 vector<char> find_node_paths(Fringe currentFringe, int optionCount, int *options) {
 	vector<char> paths;
 
@@ -166,6 +166,7 @@ void construct_path(Fringe* endPosition, vector<Fringe*> visitedNodes, int explo
 	}
 
 	// Print resulting information based on A* algorithm 
+	cout << "= = = S O L U T I O N = = =" << endl;
 	cout << "Execution Time: " << executionTime << " seconds" << endl;
 	cout << "Path Iterations: " << iterations << endl;
 	cout << "Explored Nodes: " << exploredNodes << endl << endl;
@@ -175,4 +176,5 @@ void construct_path(Fringe* endPosition, vector<Fringe*> visitedNodes, int explo
 		cout << path[i];
 		(i > 0) ? cout << " " : cout << endl;
 	}
+	cout << "= = = = = = = = = = = = = =" << endl;
 }
