@@ -1,5 +1,8 @@
-# A* Pathfinding Algorithm Written in C++
+# A* Pathfinding Algorithm Written in C++ 
 Using the concept of A*, to create a simulation of a supervised robot with a set task to find the shortest possible path (if feasible) by traversing a given environment.
+
+** Live Demonstration: **
+[![Run on Repl.it](https://repl.it/badge/github/JarrenChov/A-Star-Pathfinding)](https://repl.it/github/JarrenChov/A-Star-Pathfinding)
 
 The basis of A* search with manhattan distance heuristic => `f(n) = g(n) + h(n)` constitutes of:
 - `f(n)` = Evaluation function.
