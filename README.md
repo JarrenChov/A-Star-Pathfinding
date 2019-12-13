@@ -1,6 +1,8 @@
 # A* Pathfinding Algorithm Written in C++
 Using the concept of A*, to create a simulation of a supervised robot with a set task to find the shortest possible path (if feasible) by traversing a given environment.
 
+**Live Working Demonstration:** [![Run on Repl.it](https://repl.it/badge/github/JarrenChov/A-Star-Pathfinding)](https://repl.it/@JarrenChov/A-Star-Pathfinding)
+
 The basis of A* search with manhattan distance heuristic => `f(n) = g(n) + h(n)` constitutes of:
 - `f(n)` = Evaluation function.
 - `g(n)` = Total Cost of a cumulative total from the start node to the current node
@@ -10,7 +12,6 @@ The basis of A* search with manhattan distance heuristic => `f(n) = g(n) + h(n)`
  - Doubly Linked Lists
  - Pointer manipulation
  - Sorting (Built on top of a FIFO Queue, but arranged based on paths with lower costs)
-
 
 # Table of Contents
 - [General](#general)
@@ -49,6 +50,7 @@ A-Star-Pathfinding
 │   ├── paramDefn.cpp
 │   └── pathDefn.cpp
 ├── .gitignore
+├── .replit
 ├── Makefile
 ├── permissions.sh
 └── README.md
@@ -99,7 +101,7 @@ Since the program will expect 6 user specified information as defined below:
   - `detail information`: Denotes if the user would prefer the resulting solution without intermediate steps
     - The field accepts strictly any string format variations of `yes` and `no`, includng `y` and `n`. In addition, if the input starts with either a `y` or `n`, the corresponding letter will be taken as `yes` or `no` respectively.
   - `grid-file location`: Denotes the relative path to a specified grid file
-    - The field accepts strictly any string format of a location to a relative path of a input file. This path starts in `/build`, the same folder location as the executable `robotplanner` .
+    - The field accepts strictly any string format of a location to a relative path of a input file. This path starts in `/build` (only in your own enviroment), the same folder location as the executable `robotplanner` .
   - `start-x coordinate`: Denotes the x-coordinate of the starting position
   - `start-y coordinate`: Denotes the y-coordinate of the starting position
   - `end-x coordinate`: Denotes the x-coordinate of the end position
