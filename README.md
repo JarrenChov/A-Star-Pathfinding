@@ -182,19 +182,19 @@ Iteration 13
 =======================
 Branched Nodes from: (3, 1)
         Path Cost - g(n): 9
-        Eval Cost - f(n) = g(n) + h(n): 1438615891
+        Eval Cost - f(n) = g(n) + h(n): 9
         Current Coord: 4, 1
         Previous Coord: 3, 1
 
         Path Cost - g(n): 9
-        Eval Cost - f(n) = g(n) + h(n): 1438615893
+        Eval Cost - f(n) = g(n) + h(n): 11
         Current Coord: 3, 0
         Previous Coord: 3, 1
 
 --- Vector Resultants & Summary ---
 Iterative Node Expansion Count: 16
 Iterative Node Explored Count: 13
-Fringes: (4, 4), (4, 1), (3, 0),
+Fringes: (4, 4), (3, 0), (4, 1),
 Visited Nodes: (0, 0), (0, 1), (1, 1), (1, 2), (1, 3), (2, 3), (1, 4), (2, 4), (3, 3), (0, 4), (3, 2), (4, 3), (3, 1),
 =======================
 
@@ -205,17 +205,33 @@ Branched Nodes from: (4, 4)
 --- Vector Resultants & Summary ---
 Iterative Node Expansion Count: 16
 Iterative Node Explored Count: 14
-Fringes: (4, 1), (3, 0),
+Fringes: (3, 0), (4, 1),
 Visited Nodes: (0, 0), (0, 1), (1, 1), (1, 2), (1, 3), (2, 3), (1, 4), (2, 4), (3, 3), (0, 4), (3, 2), (4, 3), (3, 1), (4, 4),
 =======================
 
 
 Iteration 15
 =======================
+Branched Nodes from: (3, 0)
+        Path Cost - g(n): 10
+        Eval Cost - f(n) = g(n) + h(n): 13
+        Current Coord: 2, 0
+        Previous Coord: 3, 0
+
+--- Vector Resultants & Summary ---
+Iterative Node Expansion Count: 17
+Iterative Node Explored Count: 15
+Fringes: (4, 1), (2, 0),
+Visited Nodes: (0, 0), (0, 1), (1, 1), (1, 2), (1, 3), (2, 3), (1, 4), (2, 4), (3, 3), (0, 4), (3, 2), (4, 3), (3, 1), (4, 4), (3, 0),
+=======================
+
+
+Iteration 16
+=======================
 = = = S O L U T I O N = = =
 Execution Time: 0.015625 seconds
-Path Iterations: 15
-Explored Nodes: 16
+Path Iterations: 16
+Explored Nodes: 17
 
 Generated Path Size: 9
 Generated Path: D R D D R R U U R

@@ -32,7 +32,6 @@ int main(int argc, char* argv[]) {
 	
  	// Initalize environment map, starting and ending points
  	// Check to ensure input is valid
-	// int init_success = initalize(argc, argv, &startPosition, &endPosition);
 	int init_success = initalize(envPath, startCoordiantes, endCoordiantes, &startPosition, &endPosition);
 	if (init_success == -1) {
 		return -1;

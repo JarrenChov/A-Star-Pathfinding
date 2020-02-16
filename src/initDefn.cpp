@@ -123,22 +123,13 @@ int init_coordinates(Coordinates** location, int x_value, int y_value) {
 // Setup corresponding map from user input [start and end goals] and the environment
 int initalize(string envPath, int* startCoordiantes, int* endCoordiantes,
 	Coordinates** startPosition, Coordinates** endPosition) {
-	// if (arguments > 6) {
-	// 	cout << "Error: To many arugments specified" << endl;
-	// 	return -1;
-	// }
 
-	// if (arguments != 6) {
-	// 	cout << "Error: Not enough arugments specified" << endl;
-	// 	return -1;
-	// }
-
-	// Generate testgrid into a 2D-Array
-	int env_success = init_env(envPath, *startPosition, *endPosition);
 	// Assign start coordinates
 	int start_success = init_coordinates(&(*startPosition), startCoordiantes[0], startCoordiantes[1]);
 	// Assign end coordinates
 	int end_success = init_coordinates(&(*endPosition), endCoordiantes[0], endCoordiantes[1]);
+	// Generate testgrid into a 2D-Array
+	int env_success = init_env(envPath, *startPosition, *endPosition);
 
 	if (start_success == -1 || end_success == -1 || env_success == -1) {
 		return -1;
