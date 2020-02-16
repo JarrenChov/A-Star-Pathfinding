@@ -49,11 +49,11 @@ string get_environment() {
 		// Default file paths for sample grids
 		if (path == "1" || path == "2") {
 			if (path == "1") {
-				path = "./sample-grid/grid-small.txt";
+				path = "./build/sample-grid/grid-small.txt";
 			}
 
 			if (path == "2") {
-				path = "./sample-grid/grid-large.txt";
+				path = "./build/sample-grid/grid-large.txt";
 			}
 			valid = true;
 		}
